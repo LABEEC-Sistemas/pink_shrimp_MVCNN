@@ -15,6 +15,7 @@ env/
 # ===========================
 dataset/
 dataset_mvcnn/
+dataset_segmentation/
 *.zip
 *.tar
 *.tar.gz
