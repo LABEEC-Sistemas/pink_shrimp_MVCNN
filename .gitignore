@@ -16,6 +16,8 @@ env/
 dataset/
 dataset_mvcnn/
 dataset_segmentation/
+dataset_segmentation_cinza/
+dataset_segmentation_rgb/
 *.zip
 *.tar
 *.tar.gz

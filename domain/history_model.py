@@ -5,6 +5,10 @@ class HistoryModel:
         self.train_acc:list = []
         self.val_acc:list  = []
 
+        self.all_labels:list = []
+        self.all_preds:list = []
+        self.all_probs:list = []
+
     def add_train_loss(self, train_loss)->None:
         self.train_loss.append(train_loss)
 
@@ -16,6 +20,15 @@ class HistoryModel:
 
     def add_val_acc(self, val_acc)->None:
         self.val_acc.append(val_acc)
+
+    def add_all_labels(self, all_labels)->None:
+        self.all_labels.append(all_labels)
+
+    def add_all_preds(self, all_preds)->None:
+        self.all_preds.append(all_preds)
+
+    def add_all_probs(self, all_probs)->None:
+        self.all_probs.append(all_probs)
 
     def get_train_loss(self)->list:
         return self.train_loss
