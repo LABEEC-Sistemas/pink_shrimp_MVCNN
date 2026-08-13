@@ -11,6 +11,8 @@ class MVCNNDataset(Dataset):
         self.transform = transform
         self.classes = classes
 
+        self.list_sizes = []
+
         self.class_to_idx = {
             cls: i for i, cls in enumerate(classes)
         }
@@ -29,6 +31,8 @@ class MVCNNDataset(Dataset):
         for path in image_paths:
 
             img = Image.open(path).convert("RGB")
+
+            self.list_sizes.append(img.size)
 
             if self.transform:
                 img = self.transform(img)

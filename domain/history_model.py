@@ -22,13 +22,13 @@ class HistoryModel:
         self.val_acc.append(val_acc)
 
     def add_all_labels(self, all_labels)->None:
-        self.all_labels.append(all_labels)
+        self.all_labels.extend(all_labels)
 
     def add_all_preds(self, all_preds)->None:
-        self.all_preds.append(all_preds)
+        self.all_preds.extend(all_preds)
 
     def add_all_probs(self, all_probs)->None:
-        self.all_probs.append(all_probs)
+        self.all_probs.extend(all_probs)
 
     def get_train_loss(self)->list:
         return self.train_loss
@@ -41,3 +41,12 @@ class HistoryModel:
 
     def get_val_acc(self)->list:
         return self.val_acc
+
+    def get_all_probs(self)->list:
+        return self.all_probs
+
+    def get_all_labels(self)->list:
+        return self.all_labels
+
+    def get_all_preds(self)->list:
+        return self.all_preds
