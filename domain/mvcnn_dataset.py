@@ -11,7 +11,7 @@ class MVCNNDataset(Dataset):
         self.transform = transform
         self.classes = classes
 
-        self.list_sizes = []
+        self.list_sizes:dict[int, list] = {}
 
         self.class_to_idx = {
             cls: i for i, cls in enumerate(classes)
@@ -27,12 +27,13 @@ class MVCNNDataset(Dataset):
         label_str = self.labels[idx]
 
         views = []
+        self.list_sizes[idx] = []
 
         for path in image_paths:
 
             img = Image.open(path).convert("RGB")
 
-            self.list_sizes.append(img.size)
+            self.list_sizes[idx].append(img.size)
 
             if self.transform:
                 img = self.transform(img)
