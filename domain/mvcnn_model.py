@@ -3,7 +3,7 @@ import torch.nn as nn
 import torchvision.models as models
 
 class MVCNNModel(nn.Module):
-    def __init__(self, num_classes):
+    def __init__(self, num_classes, aggregation= nn.AdaptiveMaxPool1d(1)):
         super().__init__()
         backbone = models.resnet18(
             weights=models.ResNet18_Weights.DEFAULT
@@ -22,7 +22,7 @@ class MVCNNModel(nn.Module):
 
         self.avgpool = backbone.avgpool
 
-        self.aggregation = nn.AdaptiveMaxPool1d(1)
+        self.aggregation = aggregation
 
         self.classifier = nn.Linear(
             backbone.fc.in_features,

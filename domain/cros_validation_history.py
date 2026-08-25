@@ -1,5 +1,6 @@
 from .history_model import HistoryModel
 from .mvcnn_model import MVCNNModel
+import copy
 class CrossValidationHistory:
 
     def __init__(self):
@@ -9,12 +10,14 @@ class CrossValidationHistory:
         self.fold_metrics:list[dict] = []
 
         self.models:list[MVCNNModel] = []
+        self.weigths_models:list = []
 
     def get_metrics(self)->list[dict]:
         return self.fold_metrics
 
-    def add_model(self, model)->None:
+    def add_model(self, model:MVCNNModel)->None:
         self.models.append(model)
+        self.weigths_models.append(copy.deepcopy(model.state_dict()))
 
     def get_models(self)->list[MVCNNModel]:
         return self.models
