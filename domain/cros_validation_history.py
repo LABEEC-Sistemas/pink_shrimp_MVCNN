@@ -44,7 +44,7 @@ class CrossValidationHistory:
         self.history_model[fold].add_train_acc(acc)
 
     def get_train_acc_fold(self, fold)->list:
-        return self.history_model[fold].get_val_acc()
+        return self.history_model[fold].get_train_acc()
 
     def add_train_loss_fold(self, loss, fold)->None:
         if fold not in self.history_model:
